@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sculkybits:block/sculk_bones",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sculkybits:block/sculk_bones"
+    },
+    "facing=south": {
+      "model": "sculkybits:block/sculk_bones",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sculkybits:block/sculk_bones",
+      "y": 270
+    }
+  }
+}

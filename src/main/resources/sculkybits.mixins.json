@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.kaboomroads.sculkybits.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "sculkybits.refmap.json",
+  "mixins": [
+    "SculkSensorBlockMixin",
+    "WardenMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

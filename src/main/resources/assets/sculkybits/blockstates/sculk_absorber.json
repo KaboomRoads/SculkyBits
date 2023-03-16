@@ -1,0 +1,104 @@
+{
+  "variants": {
+    "facing=down,animation_state=0": {
+      "model": "sculkybits:block/sculk_absorber",
+      "x": 180
+    },
+    "facing=east,animation_state=0": {
+      "model": "sculkybits:block/sculk_absorber",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=0": {
+      "model": "sculkybits:block/sculk_absorber",
+      "x": 90
+    },
+    "facing=south,animation_state=0": {
+      "model": "sculkybits:block/sculk_absorber",
+      "x": 270
+    },
+    "facing=up,animation_state=0": {
+      "model": "sculkybits:block/sculk_absorber"
+    },
+    "facing=west,animation_state=0": {
+      "model": "sculkybits:block/sculk_absorber",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=1": {
+      "model": "sculkybits:block/sculk_absorber_0",
+      "x": 180
+    },
+    "facing=east,animation_state=1": {
+      "model": "sculkybits:block/sculk_absorber_0",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=1": {
+      "model": "sculkybits:block/sculk_absorber_0",
+      "x": 90
+    },
+    "facing=south,animation_state=1": {
+      "model": "sculkybits:block/sculk_absorber_0",
+      "x": 270
+    },
+    "facing=up,animation_state=1": {
+      "model": "sculkybits:block/sculk_absorber_0"
+    },
+    "facing=west,animation_state=1": {
+      "model": "sculkybits:block/sculk_absorber_0",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=2": {
+      "model": "sculkybits:block/sculk_absorber_1",
+      "x": 180
+    },
+    "facing=east,animation_state=2": {
+      "model": "sculkybits:block/sculk_absorber_1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=2": {
+      "model": "sculkybits:block/sculk_absorber_1",
+      "x": 90
+    },
+    "facing=south,animation_state=2": {
+      "model": "sculkybits:block/sculk_absorber_1",
+      "x": 270
+    },
+    "facing=up,animation_state=2": {
+      "model": "sculkybits:block/sculk_absorber_1"
+    },
+    "facing=west,animation_state=2": {
+      "model": "sculkybits:block/sculk_absorber_1",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=3": {
+      "model": "sculkybits:block/sculk_absorber_2",
+      "x": 180
+    },
+    "facing=east,animation_state=3": {
+      "model": "sculkybits:block/sculk_absorber_2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=3": {
+      "model": "sculkybits:block/sculk_absorber_2",
+      "x": 90
+    },
+    "facing=south,animation_state=3": {
+      "model": "sculkybits:block/sculk_absorber_2",
+      "x": 270
+    },
+    "facing=up,animation_state=3": {
+      "model": "sculkybits:block/sculk_absorber_2"
+    },
+    "facing=west,animation_state=3": {
+      "model": "sculkybits:block/sculk_absorber_2",
+      "x": 270,
+      "y": 90
+    }
+  }
+}

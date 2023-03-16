@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "sculkybits:block/sculk_bone_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "sculkybits:block/sculk_bone_block"
+    },
+    "axis=z": {
+      "model": "sculkybits:block/sculk_bone_block_horizontal",
+      "x": 90
+    }
+  }
+}

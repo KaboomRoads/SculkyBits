@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "side": "block/sculk",
+    "top": "sculkybits:block/sculk_lurker_biting_1",
+    "bottom": "block/sculk"
+  }
+}

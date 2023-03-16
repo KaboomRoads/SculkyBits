@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column_horizontal",
+  "textures": {
+    "end": "sculkybits:block/sculk_bone_block_top",
+    "side": "sculkybits:block/sculk_bone_block"
+  }
+}

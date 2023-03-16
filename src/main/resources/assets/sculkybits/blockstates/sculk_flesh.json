@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "sculkybits:block/sculk_flesh"
+      },
+      {
+        "model": "sculkybits:block/sculk_flesh_mirrored"
+      },
+      {
+        "model": "sculkybits:block/sculk_flesh",
+        "y": 180
+      },
+      {
+        "model": "sculkybits:block/sculk_flesh_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

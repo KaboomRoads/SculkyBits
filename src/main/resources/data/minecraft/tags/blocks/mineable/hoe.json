@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "sculkybits:sculk_jaw",
+    "sculkybits:sculk_flesh",
+    "sculkybits:sculk_growth",
+    "sculkybits:sculk_cage",
+    "sculkybits:sculk_trap",
+    "sculkybits:sculk_lurker",
+    "sculkybits:sculk_ribs",
+    "sculkybits:sculk_bones",
+    "sculkybits:sculk_stabber",
+    "sculkybits:sculk_absorber",
+    "sculkybits:sculk_lurer",
+    "sculkybits:sculk_feeler",
+    "sculkybits:sculk_nest"
+  ]
+}

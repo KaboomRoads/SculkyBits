@@ -1,0 +1,329 @@
+{
+  "variants": {
+    "facing=down,animation_state=0": {
+      "model": "sculkybits:block/sculk_stabber",
+      "x": 180
+    },
+    "facing=east,animation_state=0": {
+      "model": "sculkybits:block/sculk_stabber",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=0": {
+      "model": "sculkybits:block/sculk_stabber",
+      "x": 90
+    },
+    "facing=south,animation_state=0": {
+      "model": "sculkybits:block/sculk_stabber",
+      "x": 270
+    },
+    "facing=up,animation_state=0": {
+      "model": "sculkybits:block/sculk_stabber"
+    },
+    "facing=west,animation_state=0": {
+      "model": "sculkybits:block/sculk_stabber",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=1": {
+      "model": "sculkybits:block/sculk_stabber_0_0",
+      "x": 180
+    },
+    "facing=east,animation_state=1": {
+      "model": "sculkybits:block/sculk_stabber_0_0",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=1": {
+      "model": "sculkybits:block/sculk_stabber_0_0",
+      "x": 90
+    },
+    "facing=south,animation_state=1": {
+      "model": "sculkybits:block/sculk_stabber_0_0",
+      "x": 270
+    },
+    "facing=up,animation_state=1": {
+      "model": "sculkybits:block/sculk_stabber_0_0"
+    },
+    "facing=west,animation_state=1": {
+      "model": "sculkybits:block/sculk_stabber_0_0",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=2": {
+      "model": "sculkybits:block/sculk_stabber_0_1",
+      "x": 180
+    },
+    "facing=east,animation_state=2": {
+      "model": "sculkybits:block/sculk_stabber_0_1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=2": {
+      "model": "sculkybits:block/sculk_stabber_0_1",
+      "x": 90
+    },
+    "facing=south,animation_state=2": {
+      "model": "sculkybits:block/sculk_stabber_0_1",
+      "x": 270
+    },
+    "facing=up,animation_state=2": {
+      "model": "sculkybits:block/sculk_stabber_0_1"
+    },
+    "facing=west,animation_state=2": {
+      "model": "sculkybits:block/sculk_stabber_0_1",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=3": {
+      "model": "sculkybits:block/sculk_stabber_0_2",
+      "x": 180
+    },
+    "facing=east,animation_state=3": {
+      "model": "sculkybits:block/sculk_stabber_0_2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=3": {
+      "model": "sculkybits:block/sculk_stabber_0_2",
+      "x": 90
+    },
+    "facing=south,animation_state=3": {
+      "model": "sculkybits:block/sculk_stabber_0_2",
+      "x": 270
+    },
+    "facing=up,animation_state=3": {
+      "model": "sculkybits:block/sculk_stabber_0_2"
+    },
+    "facing=west,animation_state=3": {
+      "model": "sculkybits:block/sculk_stabber_0_2",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=4": {
+      "model": "sculkybits:block/sculk_stabber_1_0",
+      "x": 180
+    },
+    "facing=east,animation_state=4": {
+      "model": "sculkybits:block/sculk_stabber_1_0",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=4": {
+      "model": "sculkybits:block/sculk_stabber_1_0",
+      "x": 90
+    },
+    "facing=south,animation_state=4": {
+      "model": "sculkybits:block/sculk_stabber_1_0",
+      "x": 270
+    },
+    "facing=up,animation_state=4": {
+      "model": "sculkybits:block/sculk_stabber_1_0"
+    },
+    "facing=west,animation_state=4": {
+      "model": "sculkybits:block/sculk_stabber_1_0",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=5": {
+      "model": "sculkybits:block/sculk_stabber_1_1",
+      "x": 180
+    },
+    "facing=east,animation_state=5": {
+      "model": "sculkybits:block/sculk_stabber_1_1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=5": {
+      "model": "sculkybits:block/sculk_stabber_1_1",
+      "x": 90
+    },
+    "facing=south,animation_state=5": {
+      "model": "sculkybits:block/sculk_stabber_1_1",
+      "x": 270
+    },
+    "facing=up,animation_state=5": {
+      "model": "sculkybits:block/sculk_stabber_1_1"
+    },
+    "facing=west,animation_state=5": {
+      "model": "sculkybits:block/sculk_stabber_1_1",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=6": {
+      "model": "sculkybits:block/sculk_stabber_1_2",
+      "x": 180
+    },
+    "facing=east,animation_state=6": {
+      "model": "sculkybits:block/sculk_stabber_1_2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=6": {
+      "model": "sculkybits:block/sculk_stabber_1_2",
+      "x": 90
+    },
+    "facing=south,animation_state=6": {
+      "model": "sculkybits:block/sculk_stabber_1_2",
+      "x": 270
+    },
+    "facing=up,animation_state=6": {
+      "model": "sculkybits:block/sculk_stabber_1_2"
+    },
+    "facing=west,animation_state=6": {
+      "model": "sculkybits:block/sculk_stabber_1_2",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=7": {
+      "model": "sculkybits:block/sculk_stabber_2_0",
+      "x": 180
+    },
+    "facing=east,animation_state=7": {
+      "model": "sculkybits:block/sculk_stabber_2_0",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=7": {
+      "model": "sculkybits:block/sculk_stabber_2_0",
+      "x": 90
+    },
+    "facing=south,animation_state=7": {
+      "model": "sculkybits:block/sculk_stabber_2_0",
+      "x": 270
+    },
+    "facing=up,animation_state=7": {
+      "model": "sculkybits:block/sculk_stabber_2_0"
+    },
+    "facing=west,animation_state=7": {
+      "model": "sculkybits:block/sculk_stabber_2_0",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=8": {
+      "model": "sculkybits:block/sculk_stabber_2_1",
+      "x": 180
+    },
+    "facing=east,animation_state=8": {
+      "model": "sculkybits:block/sculk_stabber_2_1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=8": {
+      "model": "sculkybits:block/sculk_stabber_2_1",
+      "x": 90
+    },
+    "facing=south,animation_state=8": {
+      "model": "sculkybits:block/sculk_stabber_2_1",
+      "x": 270
+    },
+    "facing=up,animation_state=8": {
+      "model": "sculkybits:block/sculk_stabber_2_1"
+    },
+    "facing=west,animation_state=8": {
+      "model": "sculkybits:block/sculk_stabber_2_1",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=9": {
+      "model": "sculkybits:block/sculk_stabber_2_2",
+      "x": 180
+    },
+    "facing=east,animation_state=9": {
+      "model": "sculkybits:block/sculk_stabber_2_2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=9": {
+      "model": "sculkybits:block/sculk_stabber_2_2",
+      "x": 90
+    },
+    "facing=south,animation_state=9": {
+      "model": "sculkybits:block/sculk_stabber_2_2",
+      "x": 270
+    },
+    "facing=up,animation_state=9": {
+      "model": "sculkybits:block/sculk_stabber_2_2"
+    },
+    "facing=west,animation_state=9": {
+      "model": "sculkybits:block/sculk_stabber_2_2",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=10": {
+      "model": "sculkybits:block/sculk_stabber_3_0",
+      "x": 180
+    },
+    "facing=east,animation_state=10": {
+      "model": "sculkybits:block/sculk_stabber_3_0",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=10": {
+      "model": "sculkybits:block/sculk_stabber_3_0",
+      "x": 90
+    },
+    "facing=south,animation_state=10": {
+      "model": "sculkybits:block/sculk_stabber_3_0",
+      "x": 270
+    },
+    "facing=up,animation_state=10": {
+      "model": "sculkybits:block/sculk_stabber_3_0"
+    },
+    "facing=west,animation_state=10": {
+      "model": "sculkybits:block/sculk_stabber_3_0",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=11": {
+      "model": "sculkybits:block/sculk_stabber_3_1",
+      "x": 180
+    },
+    "facing=east,animation_state=11": {
+      "model": "sculkybits:block/sculk_stabber_3_1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=11": {
+      "model": "sculkybits:block/sculk_stabber_3_1",
+      "x": 90
+    },
+    "facing=south,animation_state=11": {
+      "model": "sculkybits:block/sculk_stabber_3_1",
+      "x": 270
+    },
+    "facing=up,animation_state=11": {
+      "model": "sculkybits:block/sculk_stabber_3_1"
+    },
+    "facing=west,animation_state=11": {
+      "model": "sculkybits:block/sculk_stabber_3_1",
+      "x": 270,
+      "y": 90
+    },
+    "facing=down,animation_state=12": {
+      "model": "sculkybits:block/sculk_stabber_3_2",
+      "x": 180
+    },
+    "facing=east,animation_state=12": {
+      "model": "sculkybits:block/sculk_stabber_3_2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,animation_state=12": {
+      "model": "sculkybits:block/sculk_stabber_3_2",
+      "x": 90
+    },
+    "facing=south,animation_state=12": {
+      "model": "sculkybits:block/sculk_stabber_3_2",
+      "x": 270
+    },
+    "facing=up,animation_state=12": {
+      "model": "sculkybits:block/sculk_stabber_3_2"
+    },
+    "facing=west,animation_state=12": {
+      "model": "sculkybits:block/sculk_stabber_3_2",
+      "x": 270,
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "animation_state=0": {
+      "model": "sculkybits:block/sculk_lurer"
+    },
+    "animation_state=1": {
+      "model": "sculkybits:block/sculk_lurer_biting_0"
+    },
+    "animation_state=2": {
+      "model": "sculkybits:block/sculk_lurer_biting_1"
+    },
+    "animation_state=3": {
+      "model": "sculkybits:block/sculk_lurer_biting_2"
+    },
+    "animation_state=4": {
+      "model": "sculkybits:block/sculk_lurer_biting_3"
+    },
+    "animation_state=5": {
+      "model": "sculkybits:block/sculk_lurer_biting_4"
+    },
+    "animation_state=6": {
+      "model": "sculkybits:block/sculk_lurer_biting_5"
+    }
+  }
+}
