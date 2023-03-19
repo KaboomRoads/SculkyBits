@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 
 group = 'com.kaboomroads'
-version = '1.0d'
+version = '1.0e'
 
 java {
     archivesBaseName = 'sculkybits'

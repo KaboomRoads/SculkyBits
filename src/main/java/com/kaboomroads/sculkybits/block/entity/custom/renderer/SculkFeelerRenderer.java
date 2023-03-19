@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Math;
 
 @OnlyIn(Dist.CLIENT)
 public class SculkFeelerRenderer implements BlockEntityRenderer<SculkFeelerBlockEntity> {
@@ -51,7 +52,7 @@ public class SculkFeelerRenderer implements BlockEntityRenderer<SculkFeelerBlock
     public void render(@NotNull SculkFeelerBlockEntity blockEntity, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int packedLight, int packedOverlay) {
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entitySolid(new ResourceLocation(Sculkybits.MOD_ID, "textures/block/sculk_feeler.png")));
         poseStack.pushPose();
-        float length = blockEntity.length;
+        float length = Math.lerp(blockEntity.lengthO, blockEntity.length, 0.5f);
         poseStack.translate(0.5, -0.5, 0.5);
         renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, length, 1, 1, 1, 1);
         poseStack.popPose();

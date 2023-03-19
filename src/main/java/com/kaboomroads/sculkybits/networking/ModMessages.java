@@ -1,7 +1,8 @@
 package com.kaboomroads.sculkybits.networking;
 
 import com.kaboomroads.sculkybits.Sculkybits;
-import com.kaboomroads.sculkybits.networking.packet.ClientboundSculkTriggerLengthPacket;
+import com.kaboomroads.sculkybits.networking.packet.ClientboundSculkFeelerExtendPacket;
+import com.kaboomroads.sculkybits.networking.packet.ClientboundSculkFeelerRetractPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -27,10 +28,16 @@ public class ModMessages {
                 .simpleChannel();
         INSTANCE = net;
 
-        net.messageBuilder(ClientboundSculkTriggerLengthPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(ClientboundSculkTriggerLengthPacket::read)
-                .encoder(ClientboundSculkTriggerLengthPacket::write)
-                .consumerMainThread(ClientboundSculkTriggerLengthPacket::handle)
+        net.messageBuilder(ClientboundSculkFeelerExtendPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ClientboundSculkFeelerExtendPacket::read)
+                .encoder(ClientboundSculkFeelerExtendPacket::write)
+                .consumerMainThread(ClientboundSculkFeelerExtendPacket::handle)
+                .add();
+
+        net.messageBuilder(ClientboundSculkFeelerRetractPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ClientboundSculkFeelerRetractPacket::read)
+                .encoder(ClientboundSculkFeelerRetractPacket::write)
+                .consumerMainThread(ClientboundSculkFeelerRetractPacket::handle)
                 .add();
     }
 

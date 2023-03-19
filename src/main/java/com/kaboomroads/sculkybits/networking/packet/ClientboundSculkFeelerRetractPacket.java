@@ -8,35 +8,31 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class ClientboundSculkTriggerLengthPacket {
+public class ClientboundSculkFeelerRetractPacket {
     public BlockPos blockEntityPos;
-    public float length;
 
-    public ClientboundSculkTriggerLengthPacket(BlockPos blockEntityPos, float length) {
+    public ClientboundSculkFeelerRetractPacket(BlockPos blockEntityPos) {
         this.blockEntityPos = blockEntityPos;
-        this.length = length;
     }
 
-    public ClientboundSculkTriggerLengthPacket(FriendlyByteBuf buf) {
-        this(buf.readBlockPos(), buf.readFloat());
+    public ClientboundSculkFeelerRetractPacket(FriendlyByteBuf buf) {
+        this(buf.readBlockPos());
     }
 
-    public static ClientboundSculkTriggerLengthPacket read(FriendlyByteBuf buf) {
+    public static ClientboundSculkFeelerRetractPacket read(FriendlyByteBuf buf) {
         BlockPos blockEntityPos = buf.readBlockPos();
-        float length = buf.readFloat();
-        return new ClientboundSculkTriggerLengthPacket(blockEntityPos, length);
+        return new ClientboundSculkFeelerRetractPacket(blockEntityPos);
     }
 
     public void write(FriendlyByteBuf buf) {
         buf.writeBlockPos(this.blockEntityPos);
-        buf.writeFloat(this.length);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
             if (Minecraft.getInstance().level.getBlockEntity(blockEntityPos) instanceof SculkFeelerBlockEntity blockEntity)
-                blockEntity.length = length;
+                blockEntity.extending = false;
         });
         return true;
     }

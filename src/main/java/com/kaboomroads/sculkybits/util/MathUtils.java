@@ -32,12 +32,12 @@ public class MathUtils {
     }
 
     public static float interpolateLinear(float from, float to, float speed) {
-        if (Math.abs(from - to) > speed) return from + speed * (to - from);
+        if (Math.abs(from - to) > speed) return from + speed * Math.signum(to - from);
         return to;
     }
 
     public static double interpolateLinear(double from, double to, double speed) {
-        if (Math.abs(from - to) > speed) return from + speed * (to - from);
+        if (Math.abs(from - to) > speed) return from + speed * Math.signum(to - from);
         return to;
     }
 

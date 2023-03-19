@@ -66,10 +66,8 @@ public class SculkNestBlockEntity extends BlockEntity implements VibrationListen
     @Override
     public void load(@NotNull CompoundTag tag) {
         super.load(tag);
-        if (tag.contains("listener", 10)) {
+        if (tag.contains("listener", 10))
             VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, tag.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((p_222864_) -> listener = p_222864_);
-        }
-
     }
 
     @Override
