@@ -27,9 +27,8 @@ public class SculkStabberBlock extends ModSculkEntityBlock {
     public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
     public static BlockState getStateForGeneration(LevelAccessor levelAccessor, BlockState blockState, BlockPos pos) {
-        Direction direction = Utils.getRandomDirectionDependingOnBlocksAroundTheBlockPosition(levelAccessor, pos, FACING.getPossibleValues(), (state) -> !state.getMaterial().isSolidBlocking());
-        if (direction == null)
-            direction = Direction.UP;
+        Direction direction = Utils.getRandomDirectionDependingOnBlocksAroundTheBlockPosition(levelAccessor, pos, FACING.getPossibleValues(), state -> !state.canOcclude());
+        if (direction == null) direction = Direction.UP;
         return blockState.setValue(FACING, direction);
     }
 

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "sculkybits:sculk",
+    "sculkybits:sculk_attack",
+    "sculkybits:sculk_entity_attack"
+  ]
+}

@@ -1,24 +1,24 @@
-modLoader="javafml" #mandatory
-loaderVersion="[44,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
-license="MIT license"
+modLoader = "javafml" #mandatory
+loaderVersion = "[46,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license = "MIT license"
 [[mods]] #mandatory
-modId="sculkybits" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="Sculkybits" #mandatory
-logoFile="sculkybits.png" #optional
-authors="KaboomRoads" #optional
-description='''
+modId = "sculkybits" #mandatory
+version = "${file.jarVersion}" #mandatory
+displayName = "Sculkybits" #mandatory
+logoFile = "sculkybits.png" #optional
+authors = "KaboomRoads" #optional
+description = '''
 Sculky Mod
 '''
 [[dependencies.sculkybits]] #optional
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="[44,)" #mandatory
-    ordering="NONE"
-    side="BOTH"
+modId = "forge" #mandatory
+mandatory = true #mandatory
+versionRange = "[46,)" #mandatory
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.sculkybits]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.19,1.20)"
-    ordering="NONE"
-    side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,1.21)"
+ordering = "NONE"
+side = "BOTH"

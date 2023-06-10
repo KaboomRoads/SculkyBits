@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -48,13 +48,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> SCULK_NEST = registerBlockAndItem("sculk_nest", () ->
             new SculkNestBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(5f, 5f).isSuffocating(Blocks::never)));
     public static final RegistryObject<Block> SCULK_CAGE = registerBlockAndItem("sculk_cage", () ->
-            new SculkCageBlock(BlockBehaviour.Properties.of(Material.SCULK).strength(3f, 3f).sound(SoundType.SCULK_CATALYST).noOcclusion()));
+            new SculkCageBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3f, 3f).sound(SoundType.SCULK_CATALYST).noOcclusion()));
     public static final RegistryObject<Block> SCULK_BONE_BLOCK = registerBlockAndItem("sculk_bone_block", () ->
-            new SculkRotatedPillarBlock(BlockBehaviour.Properties.of(Material.SCULK).strength(6f, 6f).sound(SoundType.SCULK_CATALYST)));
+            new SculkRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(6f, 6f).sound(SoundType.SCULK_CATALYST)));
     public static final RegistryObject<Block> SCULK_RIBS = registerBlockAndItem("sculk_ribs", () ->
-            new SculkRibsBlock(BlockBehaviour.Properties.of(Material.SCULK).strength(3f, 3f).sound(SoundType.SCULK_CATALYST).noOcclusion()));
+            new SculkRibsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3f, 3f).sound(SoundType.SCULK_CATALYST).noOcclusion()));
     public static final RegistryObject<Block> SCULK_BONES = registerBlockAndItem("sculk_bones", () ->
-            new SculkBonesBlock(BlockBehaviour.Properties.of(Material.SCULK).strength(3f, 3f).sound(SoundType.SCULK_CATALYST).noOcclusion()));
+            new SculkBonesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3f, 3f).sound(SoundType.SCULK_CATALYST).noOcclusion()));
 
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);

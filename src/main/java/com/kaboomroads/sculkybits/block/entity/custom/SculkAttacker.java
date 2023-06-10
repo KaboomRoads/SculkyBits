@@ -1,9 +1,9 @@
 package com.kaboomroads.sculkybits.block.entity.custom;
 
+import com.kaboomroads.sculkybits.damagesource.ModDamageSources;
 import com.kaboomroads.sculkybits.effect.ModEffects;
 import com.kaboomroads.sculkybits.entity.ModEntityTypes;
 import com.kaboomroads.sculkybits.gameevent.ModGameEvent;
-import com.kaboomroads.sculkybits.util.ModDamageSource;
 import com.kaboomroads.sculkybits.util.Utils;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -38,8 +38,8 @@ public interface SculkAttacker {
 
     static void sculkDamage(LivingEntity livingEntity) {
         if (livingEntity.getType() == EntityType.PLAYER) livingEntity.invulnerableTime = 0;
-        livingEntity.hurt(ModDamageSource.SCULK_ATTACK, 10);
-        livingEntity.level.gameEvent(ModGameEvent.SCULK_ATTACK, livingEntity.position(), GameEvent.Context.of(livingEntity));
+        livingEntity.hurt(((ModDamageSources) livingEntity.level().damageSources()).sculkAttack(), 10);
+        livingEntity.level().gameEvent(ModGameEvent.SCULK_ATTACK, livingEntity.position(), GameEvent.Context.of(livingEntity));
         applySculk(livingEntity);
     }
 

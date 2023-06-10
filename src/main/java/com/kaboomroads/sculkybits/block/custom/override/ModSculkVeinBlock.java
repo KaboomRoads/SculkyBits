@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -17,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -90,14 +90,9 @@ public class ModSculkVeinBlock extends SculkVeinBlock {
                         return false;
                 }
                 FluidState fluidstate = blockState.getFluidState();
-                if (!fluidstate.isEmpty() && !fluidstate.is(Fluids.WATER))
-                    return false;
-                else {
-                    Material material = blockState.getMaterial();
-                    if (material == Material.FIRE) return false;
-                    else
-                        return material.isReplaceable() || super.stateCanBeReplaced(blockGetter, pos1, pos2, direction, blockState);
-                }
+                if (!fluidstate.isEmpty() && !fluidstate.is(Fluids.WATER)) return false;
+                else if (blockState.is(BlockTags.FIRE)) return false;
+                else return blockState.canBeReplaced() || super.stateCanBeReplaced(blockGetter, pos1, pos2, direction, blockState);
             } else return false;
         }
 

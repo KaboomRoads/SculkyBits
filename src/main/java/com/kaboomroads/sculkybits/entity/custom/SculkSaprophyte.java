@@ -1,6 +1,6 @@
 package com.kaboomroads.sculkybits.entity.custom;
 
-import com.kaboomroads.sculkybits.util.ModDamageSource;
+import com.kaboomroads.sculkybits.damagesource.ModDamageSources;
 import com.kaboomroads.sculkybits.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -40,7 +40,7 @@ public class SculkSaprophyte extends Monster {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, this.level));
+        this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, level()));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.25D, true));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -60,7 +60,7 @@ public class SculkSaprophyte extends Monster {
         int i = EnchantmentHelper.getFireAspect(this);
         if (i > 0) entity.setSecondsOnFire(i * 4);
         entity.invulnerableTime = 0;
-        boolean flag = entity.hurt(ModDamageSource.SCULK_ENTITY_ATTACK(this), f);
+        boolean flag = entity.hurt(((ModDamageSources) level().damageSources()).sculkEntityAttack(this), f);
         if (flag) {
             if (f1 > 0.0F && entity instanceof LivingEntity) {
                 ((LivingEntity) entity).knockback(f1 * 0.5F, Mth.sin(this.getYRot() * ((float) Math.PI / 180F)), -Mth.cos(this.getYRot() * ((float) Math.PI / 180F)));

@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEventListener;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -81,6 +82,6 @@ public class SculkNestBlock extends ModSculkEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState blockState, @NotNull BlockEntityType<T> blockEntityType) {
-        return !level.isClientSide ? BaseEntityBlock.createTickerHelper(blockEntityType, ModBlockEntities.SCULK_NEST.get(), (p_222182_, p_222183_, p_222184_, p_222185_) -> p_222185_.getListener().tick(p_222182_)) : null;
+        return !level.isClientSide ? BaseEntityBlock.createTickerHelper(blockEntityType, ModBlockEntities.SCULK_NEST.get(), (l, blockPos, s, blockEntity) -> VibrationSystem.Ticker.tick(l, blockEntity.getVibrationData(), blockEntity.getVibrationUser())) : null;
     }
 }

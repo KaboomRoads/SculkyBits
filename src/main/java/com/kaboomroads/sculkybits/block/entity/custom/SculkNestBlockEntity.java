@@ -16,6 +16,7 @@ import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.SculkShriekerBlockEntity;
@@ -23,7 +24,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.BlockPositionSource;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEventListener;
-import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
+import net.minecraft.world.level.gameevent.PositionSource;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -31,9 +33,15 @@ import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 
-public class SculkNestBlockEntity extends BlockEntity implements VibrationListener.VibrationListenerConfig {
+public class SculkNestBlockEntity extends BlockEntity implements GameEventListener.Holder<VibrationSystem.Listener>, VibrationSystem {
     private static final Logger LOGGER = LogUtils.getLogger();
-    private VibrationListener listener = new VibrationListener(new BlockPositionSource(worldPosition), 8, this);
+    private VibrationSystem.Data vibrationData = new VibrationSystem.Data();
+    private final VibrationSystem.Listener vibrationListener = new VibrationSystem.Listener(this);
+    private final VibrationSystem.User vibrationUser = this.createVibrationUser();
+
+    public VibrationSystem.User createVibrationUser() {
+        return new VibrationUser(getBlockPos());
+    }
 
     public static VoxelShape getRadius(float radius) {
         return Block.box(-radius * 16, -radius * 16, -radius * 16, radius * 16, radius * 16, radius * 16);
@@ -43,7 +51,7 @@ public class SculkNestBlockEntity extends BlockEntity implements VibrationListen
         super(ModBlockEntities.SCULK_NEST.get(), pos, blockState);
     }
 
-    public void trySpawn(ServerLevel level, @Nullable ServerPlayer player) {
+    public void trySpawn(Level level, @Nullable ServerPlayer player) {
         BlockPos pos = getBlockPos();
         if (player == null || getBlockState().getValue(SculkNestBlock.INACTIVE)) return;
         SculkCrawler crawler = ModEntityTypes.SCULK_CRAWLER.get().create(level);
@@ -59,36 +67,84 @@ public class SculkNestBlockEntity extends BlockEntity implements VibrationListen
         level.addFreshEntity(crawler);
     }
 
-    public VibrationListener getListener() {
-        return listener;
-    }
-
     @Override
-    public void load(@NotNull CompoundTag tag) {
+    public void load(CompoundTag tag) {
         super.load(tag);
         if (tag.contains("listener", 10))
-            VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, tag.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((p_222864_) -> listener = p_222864_);
+            VibrationSystem.Data.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, tag.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((data) -> {
+                vibrationData = data;
+            });
     }
 
     @Override
-    protected void saveAdditional(@NotNull CompoundTag tag) {
+    protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        VibrationListener.codec(this).encodeStart(NbtOps.INSTANCE, listener).resultOrPartial(LOGGER::error).ifPresent((p_222871_) -> tag.put("listener", p_222871_));
+        VibrationSystem.Data.CODEC.encodeStart(NbtOps.INSTANCE, this.vibrationData).resultOrPartial(LOGGER::error).ifPresent((p_222820_) -> {
+            tag.put("listener", p_222820_);
+        });
     }
 
     @NotNull
     @Override
-    public TagKey<GameEvent> getListenableEvents() {
-        return GameEventTags.SHRIEKER_CAN_LISTEN;
+    public Data getVibrationData() {
+        return vibrationData;
     }
 
+    @NotNull
     @Override
-    public boolean shouldListen(@NotNull ServerLevel p_222856_, @NotNull GameEventListener p_222857_, @NotNull BlockPos p_222858_, @NotNull GameEvent p_222859_, @NotNull GameEvent.Context p_222860_) {
-        return !isRemoved() && SculkShriekerBlockEntity.tryGetPlayer(p_222860_.sourceEntity()) != null;
+    public User getVibrationUser() {
+        return vibrationUser;
     }
 
+    @NotNull
     @Override
-    public void onSignalReceive(@NotNull ServerLevel p_222848_, @NotNull GameEventListener p_222849_, @NotNull BlockPos p_222850_, @NotNull GameEvent p_222851_, @Nullable Entity p_222852_, @Nullable Entity p_222853_, float p_222854_) {
-        trySpawn(p_222848_, SculkShriekerBlockEntity.tryGetPlayer(p_222853_ != null ? p_222853_ : p_222852_));
+    public Listener getListener() {
+        return vibrationListener;
+    }
+
+    protected class VibrationUser implements VibrationSystem.User {
+        protected final BlockPos blockPos;
+        private final PositionSource positionSource;
+
+        public VibrationUser(BlockPos blockPos) {
+            this.blockPos = blockPos;
+            positionSource = new BlockPositionSource(blockPos);
+        }
+
+        @Override
+        public int getListenerRadius() {
+            return 8;
+        }
+
+        @NotNull
+        @Override
+        public TagKey<GameEvent> getListenableEvents() {
+            return GameEventTags.SHRIEKER_CAN_LISTEN;
+        }
+
+        @Override
+        public PositionSource getPositionSource() {
+            return this.positionSource;
+        }
+
+        @Override
+        public boolean canTriggerAvoidVibration() {
+            return true;
+        }
+
+        @Override
+        public boolean canReceiveVibration(ServerLevel p_282127_, BlockPos p_283268_, GameEvent p_282187_, @Nullable GameEvent.Context p_282856_) {
+            return !isRemoved() && p_282856_ != null && SculkShriekerBlockEntity.tryGetPlayer(p_282856_.sourceEntity()) != null;
+        }
+
+        @Override
+        public void onReceiveVibration(ServerLevel p_282851_, BlockPos p_281608_, GameEvent p_282979_, @Nullable Entity p_282123_, @Nullable Entity p_283090_, float p_283130_) {
+            SculkNestBlockEntity.this.trySpawn(level, SculkShriekerBlockEntity.tryGetPlayer(p_283090_ != null ? p_283090_ : p_282123_));
+        }
+
+        @Override
+        public void onDataChanged() {
+            SculkNestBlockEntity.this.setChanged();
+        }
     }
 }

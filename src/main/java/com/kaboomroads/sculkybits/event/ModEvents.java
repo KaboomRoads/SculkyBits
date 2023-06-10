@@ -2,12 +2,12 @@ package com.kaboomroads.sculkybits.event;
 
 import com.kaboomroads.sculkybits.Sculkybits;
 import com.kaboomroads.sculkybits.block.custom.override.ModSculkBlock;
+import com.kaboomroads.sculkybits.damagesource.ModDamageSources;
 import com.kaboomroads.sculkybits.effect.ModEffects;
 import com.kaboomroads.sculkybits.entity.ModEntityTypes;
 import com.kaboomroads.sculkybits.entity.custom.SculkSaprophyte;
 import com.kaboomroads.sculkybits.gamerule.ModGameRules;
 import com.kaboomroads.sculkybits.util.MathUtils;
-import com.kaboomroads.sculkybits.util.ModDamageSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -34,8 +34,8 @@ public class ModEvents {
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
         LivingEntity entity = event.getEntity();
-        if (entity.level.isClientSide) return;
-        if (event.getSource() != ModDamageSource.SCULK && entity.hasEffect(ModEffects.SCULK.get())) {
+        if (entity.level().isClientSide) return;
+        if (event.getSource() != ((ModDamageSources) entity.level().damageSources()).sculk() && entity.hasEffect(ModEffects.SCULK.get())) {
             float multiplier = entity.getEffect(ModEffects.SCULK.get()).getAmplifier() * 0.75f + 1;
             event.setAmount(event.getAmount() * multiplier);
         }
@@ -44,9 +44,9 @@ public class ModEvents {
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         LivingEntity entity = event.getEntity();
-        Level level = entity.level;
+        Level level = entity.level();
         if (level.isClientSide) return;
-        if (event.getSource() == ModDamageSource.SCULK_ATTACK || event.getSource() == ModDamageSource.SCULK) {
+        if (event.getSource() == ((ModDamageSources) level.damageSources()).sculkAttack() || event.getSource() == ((ModDamageSources) level.damageSources()).sculk()) {
             if (entity.getType() != ModEntityTypes.SCULK_SAPROPHYTE.get()) {
                 int amount = ModGameRules.RULE_SCULK_SAPROPHYTE_MOB_COUNT != null ? level.getGameRules().getInt(ModGameRules.RULE_SCULK_SAPROPHYTE_MOB_COUNT) : 1;
                 if (entity.getType() == EntityType.PLAYER)
