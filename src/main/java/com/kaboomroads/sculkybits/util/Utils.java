@@ -50,9 +50,9 @@ public class Utils {
     public static void maybeDisableShield(Mob mob, Player player, ItemStack itemStack1, ItemStack itemStack2) {
         if (!itemStack1.isEmpty() && !itemStack2.isEmpty() && itemStack1.getItem() instanceof AxeItem && itemStack2.is(Items.SHIELD)) {
             float f = 0.25F + (float) EnchantmentHelper.getBlockEfficiency(mob) * 0.05F;
-            if (mob.level.random.nextFloat() < f) {
+            if (mob.level().random.nextFloat() < f) {
                 player.getCooldowns().addCooldown(Items.SHIELD, 100);
-                mob.level.broadcastEntityEvent(player, (byte) 30);
+                mob.level().broadcastEntityEvent(player, (byte) 30);
             }
         }
     }

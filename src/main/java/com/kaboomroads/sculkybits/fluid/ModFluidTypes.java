@@ -9,7 +9,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -50,11 +49,11 @@ public class ModFluidTypes {
                 public boolean move(FluidState state, LivingEntity entity, Vec3 movementVector, double gravity) {
                     double multiplier = 0.25;
                     if (entity.fallDistance >= 3) {
-                        entity.causeFallDamage(entity.fallDistance, getFallDistanceModifier(entity), DamageSource.FALL);
+                        entity.causeFallDamage(entity.fallDistance, getFallDistanceModifier(entity), entity.level().damageSources().fall());
                         entity.resetFallDistance();
                     }
                     Vec3 vec3 = entity.getDeltaMovement().multiply(multiplier, entity.getDeltaMovement().y > 0 ? multiplier : multiplier * 2, multiplier);
-                    entity.setDeltaMovement(vec3.x, entity.isOnGround() ? 0 : vec3.y - 0.005, vec3.z);
+                    entity.setDeltaMovement(vec3.x, entity.onGround() ? 0 : vec3.y - 0.005, vec3.z);
                     entity.addEffect(new MobEffectInstance(ModEffects.SCULK.get(), 200, 0));
                     return super.move(state, entity, movementVector, gravity);
                 }

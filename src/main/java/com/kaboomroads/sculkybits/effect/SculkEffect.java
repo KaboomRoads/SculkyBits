@@ -1,7 +1,7 @@
 package com.kaboomroads.sculkybits.effect;
 
 import com.kaboomroads.sculkybits.block.entity.custom.SculkAttacker;
-import com.kaboomroads.sculkybits.util.ModDamageSource;
+import com.kaboomroads.sculkybits.damagesource.ModDamageSources;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,9 +14,9 @@ public class SculkEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
-        if (!livingEntity.level.isClientSide && SculkAttacker.testAttackable(livingEntity)) {
+        if (!livingEntity.level().isClientSide && SculkAttacker.testAttackable(livingEntity)) {
             float multiplier = amplifier * 0.5f + 1;
-            livingEntity.hurt(ModDamageSource.SCULK, 5 * multiplier);
+            livingEntity.hurt(((ModDamageSources) livingEntity.level().damageSources()).sculk(), 5 * multiplier);
         }
         super.applyEffectTick(livingEntity, amplifier);
     }

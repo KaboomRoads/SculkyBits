@@ -1,7 +1,7 @@
 package com.kaboomroads.sculkybits.entity.custom;
 
 import com.kaboomroads.sculkybits.block.entity.custom.SculkAttacker;
-import com.kaboomroads.sculkybits.util.ModDamageSource;
+import com.kaboomroads.sculkybits.damagesource.ModDamageSources;
 import com.kaboomroads.sculkybits.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -46,7 +46,7 @@ public class SculkCrawler extends Spider {
     }
 
     public boolean isMovingOnLand() {
-        return this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D && !this.isInWaterOrBubble();
+        return onGround() && getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D && !isInWaterOrBubble();
     }
 
     @Override
@@ -61,15 +61,15 @@ public class SculkCrawler extends Spider {
 
     @Override
     public void handleEntityEvent(byte id) {
-        if (id == 4) this.attackAnimationState.start(this.tickCount);
+        if (id == 4) attackAnimationState.start(tickCount);
         else super.handleEntityEvent(id);
     }
 
     @Override
     public void tick() {
-        if (this.level.isClientSide()) {
-            if (this.isMovingOnLand()) this.walkAnimationState.startIfStopped(this.tickCount);
-            else this.walkAnimationState.stop();
+        if (level().isClientSide()) {
+            if (isMovingOnLand()) walkAnimationState.startIfStopped(tickCount);
+            else walkAnimationState.stop();
         }
         super.tick();
     }
@@ -88,17 +88,17 @@ public class SculkCrawler extends Spider {
 
     @Override
     public boolean doHurtTarget(@NotNull Entity entity) {
-        this.level.broadcastEntityEvent(this, (byte) 4);
-        float f = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float f1 = (float) this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
+        level().broadcastEntityEvent(this, (byte) 4);
+        float f = (float) getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float f1 = (float) getAttributeValue(Attributes.ATTACK_KNOCKBACK);
         if (entity instanceof LivingEntity) {
-            f += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity) entity).getMobType());
+            f += EnchantmentHelper.getDamageBonus(getMainHandItem(), ((LivingEntity) entity).getMobType());
             f1 += (float) EnchantmentHelper.getKnockbackBonus(this);
         }
         int i = EnchantmentHelper.getFireAspect(this);
         if (i > 0) entity.setSecondsOnFire(i * 4);
         entity.invulnerableTime = 0;
-        boolean flag = entity.hurt(ModDamageSource.SCULK_ENTITY_ATTACK(this), f);
+        boolean flag = entity.hurt(((ModDamageSources) level().damageSources()).sculkEntityAttack(this), f);
         if (flag) {
             if (entity instanceof LivingEntity livingEntity) {
                 SculkAttacker.applySculk(livingEntity);
@@ -108,9 +108,9 @@ public class SculkCrawler extends Spider {
                 }
             }
             if (entity instanceof Player player)
-                Utils.maybeDisableShield(this, player, this.getMainHandItem(), player.isUsingItem() ? player.getUseItem() : ItemStack.EMPTY);
-            this.doEnchantDamageEffects(this, entity);
-            this.setLastHurtMob(entity);
+                Utils.maybeDisableShield(this, player, getMainHandItem(), player.isUsingItem() ? player.getUseItem() : ItemStack.EMPTY);
+            doEnchantDamageEffects(this, entity);
+            setLastHurtMob(entity);
         }
         return flag;
     }

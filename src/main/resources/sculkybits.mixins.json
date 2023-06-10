@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "sculkybits.refmap.json",
   "mixins": [
+    "DamageSourcesInvoker",
+    "DamageSourcesMixin",
     "SculkSensorBlockMixin",
     "WardenMixin"
   ],

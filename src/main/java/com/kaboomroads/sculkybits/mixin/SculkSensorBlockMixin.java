@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class SculkSensorBlockMixin {
     @Inject(method = "stepOn", at = @At("HEAD"), cancellable = true)
     public void canTargetEntity(Level level, BlockPos blockPos, BlockState blockState, Entity entity, CallbackInfo ci) {
-        if (!level.isClientSide() && SculkSensorBlock.canActivate(blockState) && !SculkAttacker.testAttackable(entity))
-            ci.cancel();
+        if (!level.isClientSide() && SculkSensorBlock.canActivate(blockState) && !SculkAttacker.testAttackable(entity)) ci.cancel();
     }
 }

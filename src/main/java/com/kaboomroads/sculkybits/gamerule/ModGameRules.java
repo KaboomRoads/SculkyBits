@@ -29,6 +29,9 @@ public class ModGameRules {
         System.out.println("Registering " + Sculkybits.MOD_ID + " game rules.");
     }
 
+    public static void init() {
+    }
+
     public static class FloatValue extends GameRules.Value<FloatValue> {
         private float value;
 

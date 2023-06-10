@@ -2,6 +2,7 @@ package com.kaboomroads.sculkybits;
 
 import com.kaboomroads.sculkybits.block.ModBlocks;
 import com.kaboomroads.sculkybits.block.entity.ModBlockEntities;
+import com.kaboomroads.sculkybits.creativemodetab.ModCreativeModeTabs;
 import com.kaboomroads.sculkybits.effect.ModEffects;
 import com.kaboomroads.sculkybits.entity.ModEntityTypes;
 import com.kaboomroads.sculkybits.fluid.ModFluidTypes;
@@ -31,8 +32,9 @@ public class Sculkybits {
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModEntityTypes.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
+        ModGameRules.init();
         modEventBus.addListener(this::commonSetup);
-        new ModGameRules();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
